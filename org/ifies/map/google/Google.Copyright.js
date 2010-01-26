@@ -14,8 +14,8 @@ Mapifies.Copyright = {};
  * @return {Function} callback The callback option with the copyright container and copywrite object.
  */
 Mapifies.AddCopyright = function (element, options, callback) {
-	/**
- 	 * Default options for AddCopyright
+  /**
+   * Default options for AddCopyright
    * @method
    * @namespace Mapifies
    * @id Mapifies.AddCopyright
@@ -26,27 +26,27 @@ Mapifies.AddCopyright = function (element, options, callback) {
    * @param {Number} copyrightMinZoom The minimum level to show the maptype at
    * @param {String} copyrightText The copyright text for the maptype.
    */
-	function defaults() {
-		return {
-			'copyrightCollectionPrefix': '&copy; ',
-			'copyrightID': null,
-			'copyrightBounds': null,
-			'copyrightMinZoom': null,
-			'copyrightText': null
-		}
-	};
-	options = jQuery.extend(defaults(), options);
-	
-	var boundSW = options.copyrightBounds[0];
-	var boundNE = options.copyrightBounds[1];
-	
-	var copyright = new GCopyright(
-		options.copyrightID,
-		new GLatLngBounds(new GLatLng(boundSW[0], boundSW[1]), new GLatLng(boundNE[0], boundNE[1])),
-		options.copyrightMinZoom,
-		options.copyrightText
-	);
-	var copyrightCollection = new GCopyrightCollection(options.copyrightCollectionPrefix);
-	copyrightCollection.addCopyright(copyright);
-	if (typeof callback === 'function') return callback(copyrightCollection, copyright, options);
+  function defaults() {
+    return {
+      'copyrightCollectionPrefix': '&copy; ',
+      'copyrightID': null,
+      'copyrightBounds': null,
+      'copyrightMinZoom': null,
+      'copyrightText': null
+    }
+  };
+  options = jQuery.extend(defaults(), options);
+  
+  var boundSW = options.copyrightBounds[0];
+  var boundNE = options.copyrightBounds[1];
+  
+  var copyright = new GCopyright(
+    options.copyrightID,
+    new GLatLngBounds(new GLatLng(boundSW[0], boundSW[1]), new GLatLng(boundNE[0], boundNE[1])),
+    options.copyrightMinZoom,
+    options.copyrightText
+  );
+  var copyrightCollection = new GCopyrightCollection(options.copyrightCollectionPrefix);
+  copyrightCollection.addCopyright(copyright);
+  if (typeof callback === 'function') return callback(copyrightCollection, copyright, options);
 };

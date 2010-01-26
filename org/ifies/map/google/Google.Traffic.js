@@ -11,33 +11,33 @@
  * @return {Function} callback The callback option with the traffic layer.
  */
 Mapifies.AddTrafficInfo = function( element, options, callback) {
-	/**
-	 * Default options for AddTrafficInfo
-	 * @method
-	 * @namespace Mapifies.AddTrafficInfo
-	 * @id Mapifies.AddTrafficInfo.defaults
-	 * @alias Mapifies.AddTrafficInfo.defaults
-	 * @param {Object} mapCenter The Lat/Lng to center the map on
-	 * @return {Object} The options for AddTrafficInfo
-	 */
-	function defaults() {
-		return {
-			// Center the map on this point (optional)
-			'mapCenter': []
-		};
-	};
-	var thisMap = Mapifies.MapObjects.Get(element);
-	options = jQuery.extend(defaults(), options);
+  /**
+   * Default options for AddTrafficInfo
+   * @method
+   * @namespace Mapifies.AddTrafficInfo
+   * @id Mapifies.AddTrafficInfo.defaults
+   * @alias Mapifies.AddTrafficInfo.defaults
+   * @param {Object} mapCenter The Lat/Lng to center the map on
+   * @return {Object} The options for AddTrafficInfo
+   */
+  function defaults() {
+    return {
+      // Center the map on this point (optional)
+      'mapCenter': []
+    };
+  };
+  var thisMap = Mapifies.MapObjects.Get(element);
+  options = jQuery.extend(defaults(), options);
 
-	var trafficOverlay = new GTrafficOverlay;
-	// Add overlay
-	thisMap.addOverlay(trafficOverlay);
-	// If the user has passed the optional mapCenter,
-	// then center the map on that point
-	if (options.mapCenter[0] && options.mapCenter[1]) {
-		thisMap.setCenter(new GLatLng(options.mapCenter[0], options.mapCenter[1]));
-	}
-	if (typeof callback == 'function') return callback(trafficOverlay, options);
+  var trafficOverlay = new GTrafficOverlay;
+  // Add overlay
+  thisMap.addOverlay(trafficOverlay);
+  // If the user has passed the optional mapCenter,
+  // then center the map on that point
+  if (options.mapCenter[0] && options.mapCenter[1]) {
+    thisMap.setCenter(new GLatLng(options.mapCenter[0], options.mapCenter[1]));
+  }
+  if (typeof callback == 'function') return callback(trafficOverlay, options);
 };
 
 /**
@@ -52,8 +52,8 @@ Mapifies.AddTrafficInfo = function( element, options, callback) {
  * @return {Function} callback The callback option with the traffic overlay.
  */
 Mapifies.RemoveTrafficInfo = function ( element, trafficOverlay, callback ) {
-	var thisMap = Mapifies.MapObjects.Get(element);
-	thisMap.removeOverlay(trafficOverlay);
-	if (typeof callback === 'function') return callback(trafficOverlay);
-	return;
+  var thisMap = Mapifies.MapObjects.Get(element);
+  thisMap.removeOverlay(trafficOverlay);
+  if (typeof callback === 'function') return callback(trafficOverlay);
+  return;
 };

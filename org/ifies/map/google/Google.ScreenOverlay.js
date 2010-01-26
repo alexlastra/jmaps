@@ -11,33 +11,33 @@
  * @return {Function} callback The callback option with the screen overlay and options.
  */
 Mapifies.AddScreenOverlay = function( element, options, callback ) {
-	/**
-	 * Default options for AddScreenOverlay
-	 * @method
-	 * @namespace Mapifies.AddScreenOverlay
-	 * @id Mapifies.AddScreenOverlay.defaults
-	 * @alias Mapifies.AddScreenOverlay.defaults
-	 * @param {String} imageUrl The URL of the image to load.
-	 * @param {Object} screenXY The X/Y position in the viewport to place the image.
-	 * @param {Object} overlayXY The overlay X/Y position in the viewport.
-	 * @param {Object} size The size of the image, which is converted to a GSize.
-	 * @return {Object} The options for AddScreenOverlay
-	 */
-	function defaults() {
-		return {
-			'imageUrl':'',
-			'screenXY':[],
-			'overlayXY':[],
-			'size':[]
-		};
-	};
-	var thisMap = Mapifies.MapObjects.Get(element);
-	options = jQuery.extend(defaults(), options);
+  /**
+   * Default options for AddScreenOverlay
+   * @method
+   * @namespace Mapifies.AddScreenOverlay
+   * @id Mapifies.AddScreenOverlay.defaults
+   * @alias Mapifies.AddScreenOverlay.defaults
+   * @param {String} imageUrl The URL of the image to load.
+   * @param {Object} screenXY The X/Y position in the viewport to place the image.
+   * @param {Object} overlayXY The overlay X/Y position in the viewport.
+   * @param {Object} size The size of the image, which is converted to a GSize.
+   * @return {Object} The options for AddScreenOverlay
+   */
+  function defaults() {
+    return {
+      'imageUrl':'',
+      'screenXY':[],
+      'overlayXY':[],
+      'size':[]
+    };
+  };
+  var thisMap = Mapifies.MapObjects.Get(element);
+  options = jQuery.extend(defaults(), options);
 
-	var overlay = new GScreenOverlay(options.imageUrl, new GScreenPoint(options.screenXY[0],options.screenXY[1]), new GScreenPoint(options.overlayXY[0],options.overlayXY[1]), new GScreenSize(options.size[0],options.size[1]));
-	thisMap.addOverlay(overlay);
-		
-	if (typeof callback == 'function') return callback(overlay, options);
+  var overlay = new GScreenOverlay(options.imageUrl, new GScreenPoint(options.screenXY[0],options.screenXY[1]), new GScreenPoint(options.overlayXY[0],options.overlayXY[1]), new GScreenSize(options.size[0],options.size[1]));
+  thisMap.addOverlay(overlay);
+    
+  if (typeof callback == 'function') return callback(overlay, options);
 };
 
 /**
@@ -52,8 +52,8 @@ Mapifies.AddScreenOverlay = function( element, options, callback ) {
  * @return {Function} callback The callback option with the overlay.
  */
 Mapifies.RemoveScreenOverlay = function ( element, overlay, callback ) {
-	var thisMap = Mapifies.MapObjects.Get(element);
-	thisMap.removeOverlay(overlay);
-	if (typeof callback === 'function') return callback(overlay);
-	return;
+  var thisMap = Mapifies.MapObjects.Get(element);
+  thisMap.removeOverlay(overlay);
+  if (typeof callback === 'function') return callback(overlay);
+  return;
 };
